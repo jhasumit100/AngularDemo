@@ -1,0 +1,10 @@
+mat-sidenav-container{
+  position: absolute; 
+  left: 0;
+  right: 0;
+  height: 90%;
+}
+
+mat-sidenav{
+  width: 50%;
+}

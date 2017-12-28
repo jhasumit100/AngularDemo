@@ -1,0 +1,17 @@
+<mat-toolbar color="primary">    
+    <mat-icon mat-button appSidenavToggle>
+        menu
+    </mat-icon> 
+    <span>
+        Personalised DashBoard
+    </span>
+
+    <mat-menu #menu="matMenu">
+        <button mat-menu-item>TechPack</button>
+        <button mat-menu-item>Color Card</button>
+        <button mat-menu-item>Size Card</button>
+    </mat-menu>
+</mat-toolbar>
+
+
+<app-sidenav-layout></app-sidenav-layout>
