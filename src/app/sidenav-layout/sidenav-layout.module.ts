@@ -6,13 +6,15 @@ import { SidenavToggleDirective } from './sidenav-toggle.directive';
 import { SidenavToggleService } from './sidenav-toggle.service';
 import { SettingsModule } from '../settings';
 import { WidgetContentModule } from '../widget-content';
+import { NgProgressModule } from 'ngx-progressbar';
 
 @NgModule({
   imports: [
     CommonModule,
     MatSidenavModule,
     SettingsModule,
-    WidgetContentModule
+    WidgetContentModule,
+    NgProgressModule
   ],
   declarations: [SidenavLayoutComponent, SidenavToggleDirective],
   exports: [

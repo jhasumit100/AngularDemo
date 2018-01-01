@@ -1,9 +1,13 @@
 <mat-sidenav-container>
     <mat-sidenav>
-      <widget-setting [charts]="charts"></widget-setting>
+      <widget-setting [charts]="charts" (filter)="UpdateChart($event)"></widget-setting>
     </mat-sidenav>
     
     <mat-sidenav-content>
         <widget-content-layout [charts]="charts"></widget-content-layout>
     </mat-sidenav-content>
 </mat-sidenav-container>
+
+<ng-progress [positionUsing]="'marginLeft'" [minimum]="0.15" [maximum]="1"
+[speed]="200" [showSpinner]="true" [direction]="'leftToRightIncreased'"
+[color]="'red'" [trickleSpeed]="250" [thick]="true" [ease]="'linear'"></ng-progress>
