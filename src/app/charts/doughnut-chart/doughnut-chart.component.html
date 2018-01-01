@@ -1,8 +1,11 @@
-<div style="display: block">
+<div style="display: block" *ngIf="charts">
     <canvas baseChart width="600px"
-                [data]="doughnutChartData"
+                [datasets]="doughnutChartDataSet"
                 [labels]="doughnutChartLabels"
                 [chartType]="doughnutChartType"
+                [options]="doughnutChartOptions"
+				[legend]="false"
+                [colors]="colors"     
                 (chartHover)="chartHovered($event)"
                 (chartClick)="chartClicked($event)"></canvas>
   </div>

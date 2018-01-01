@@ -1,9 +1,9 @@
 <mat-sidenav-container>
     <mat-sidenav>
-      <widget-setting></widget-setting>
+      <widget-setting [charts]="charts"></widget-setting>
     </mat-sidenav>
     
     <mat-sidenav-content>
-        <widget-content-layout></widget-content-layout>
+        <widget-content-layout [charts]="charts"></widget-content-layout>
     </mat-sidenav-content>
 </mat-sidenav-container>

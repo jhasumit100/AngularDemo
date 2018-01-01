@@ -1,0 +1,14 @@
+mat-select-trigger span{
+    opacity: 0.75;
+    font-size: 0.75em;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+}
+
+.container > * {
+    width: 80%;
+}

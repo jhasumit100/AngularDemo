@@ -1,25 +1,35 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Charts } from '../../Data/charts';
+import { Color } from 'ng2-charts';
 
 @Component({
   selector: 'bar-chart',
   templateUrl: './bar-chart.component.html',
   styleUrls: ['./bar-chart.component.css']
 })
-export class BarChartComponent implements OnInit {
-  
-  public barChartLabels:string[] = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
+export class BarChartComponent {
+  charts : Charts;
+  @Input('charts')
+  set in (charts){
+    if (charts) {
+      this.charts = charts;
+      charts.Chartdata.dataSets.forEach(element => {
+        this.barChartData.push(element);
+      });
+      
+      charts.Chartdata.labels.forEach(element => {
+        this.barChartLabels.push(element);
+      });
+    }
+  }
+  public colors: Array<Color> = [{}];
+  public barChartLabels:string[] = [];
   public barChartType:string = 'bar';
-  public barChartLegend:boolean = true;
+  public barChartLegend:boolean = false;
 
-  public barChartData:any[] = [
-    {data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A'},
-    {data: [28, 48, 40, 19, 86, 27, 90], label: 'Series B'}
-  ];
+  public barChartData:any[] = [];
 
   constructor() { }
-
-  ngOnInit() {
-  }
 
   // events
   public chartClicked(e:any):void {

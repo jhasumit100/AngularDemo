@@ -1,3 +1,10 @@
-<p>
-  setting works!
-</p>
+<div class="container">
+    <mat-form-field *ngIf="charts">
+      <mat-select matInput placeholder="Product Group" ([ngModel])="WidgetSettings" (change)="onWidgetSettingsChange()"
+        multiple>
+        <mat-option *ngFor="let ProductGroup of ProductGroupList" [value]="ProductGroup">
+          {{ProductGroup}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+</div>

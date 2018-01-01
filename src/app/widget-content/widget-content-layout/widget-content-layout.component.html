@@ -1,14 +1,14 @@
 <mat-grid-list cols="2" rowHeight="2:1">
         <mat-grid-tile>
-                <pie-chart></pie-chart>
+                <pie-chart [charts] = "charts"></pie-chart>
         </mat-grid-tile>
         <mat-grid-tile>
-                <bar-chart></bar-chart>
+                <bar-chart [charts] = "charts"></bar-chart>
         </mat-grid-tile>
         <mat-grid-tile>
-                <line-chart></line-chart>
+                <line-chart [charts] = "charts"></line-chart>
         </mat-grid-tile>
         <mat-grid-tile>
-                <doughnut-chart></doughnut-chart>
+                <doughnut-chart [charts] = "charts"></doughnut-chart>
         </mat-grid-tile>
 </mat-grid-list>
