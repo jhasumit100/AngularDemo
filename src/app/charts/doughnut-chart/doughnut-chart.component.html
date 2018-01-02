@@ -1,11 +1,4 @@
 <div style="display: block" *ngIf="charts">
-    <canvas baseChart width="600px"
-                [datasets]="doughnutChartDataSet"
-                [labels]="doughnutChartLabels"
-                [chartType]="doughnutChartType"
-                [options]="doughnutChartOptions"
-				[legend]="false"
-                [colors]="colors"     
-                (chartHover)="chartHovered($event)"
-                (chartClick)="chartClicked($event)"></canvas>
-  </div>
+    <canvas #doughnutcanvas baseChart width="600px" [datasets]="doughnutChartDataSet" [labels]="doughnutChartLabels" [chartType]="doughnutChartType"
+        [options]="doughnutChartOptions" [legend]="false" [colors]="colors" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+</div>

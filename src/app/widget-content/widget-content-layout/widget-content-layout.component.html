@@ -1,14 +1,38 @@
-<mat-grid-list cols="2" rowHeight="2:1">
+<mat-grid-list cols="2" rowHeight="3:2">
         <mat-grid-tile>
-                <pie-chart [charts] = "charts"></pie-chart>
+                <mat-card>
+                        <mat-card-header>
+                                <mat-card-title>Pie Chart</mat-card-title>
+                                <mat-card-subtitle>Product Sub Category</mat-card-subtitle>
+                        </mat-card-header>
+                        <pie-chart [charts]="charts"></pie-chart>
+                </mat-card>
         </mat-grid-tile>
         <mat-grid-tile>
-                <bar-chart [charts] = "charts"></bar-chart>
+                <mat-card>
+                        <mat-card-header>
+                                <mat-card-title>Bar Chart</mat-card-title>
+                                <mat-card-subtitle>Product Sub Category</mat-card-subtitle>
+                        </mat-card-header>
+                        <bar-chart [charts]="charts"></bar-chart>
+                </mat-card>
         </mat-grid-tile>
         <mat-grid-tile>
-                <line-chart [charts] = "charts"></line-chart>
+                <mat-card>
+                        <mat-card-header>
+                                <mat-card-title>Line Chart</mat-card-title>
+                                <mat-card-subtitle>Product Sub Category</mat-card-subtitle>
+                        </mat-card-header>
+                        <line-chart [charts]="charts"></line-chart>
+                </mat-card>
         </mat-grid-tile>
         <mat-grid-tile>
-                <doughnut-chart [charts] = "charts"></doughnut-chart>
+                <mat-card>
+                        <mat-card-header>
+                                <mat-card-title>Doughnut Chart</mat-card-title>
+                                <mat-card-subtitle>Product Sub Category</mat-card-subtitle>
+                        </mat-card-header>
+                        <doughnut-chart [charts]="charts"></doughnut-chart>
+                </mat-card>
         </mat-grid-tile>
 </mat-grid-list>
