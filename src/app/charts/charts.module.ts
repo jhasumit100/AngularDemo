@@ -14,14 +14,14 @@ import { ChartService } from '../Data/chart.service';
     CommonModule,
     ChartsModule
   ],
-  exports:[
-    PieChartComponent,BarChartComponent,LineChartComponent,DoughnutChartComponent,HttpModule
+  exports: [
+    PieChartComponent, BarChartComponent, LineChartComponent, DoughnutChartComponent, HttpModule
   ],
-  providers:[
-    oDataService,ChartService
+  providers: [
+    oDataService, ChartService
   ],
   declarations: [PieChartComponent, BarChartComponent, LineChartComponent, DoughnutChartComponent]
 })
-export class ChartModule {  
-  
- }
+export class ChartModule {
+
+}
