@@ -28,7 +28,10 @@ export class BarChartComponent {
   public barChartLegend:boolean = false;
 
   public barChartData:any[] = [];
-
+  public barChartOptions:any = {
+    scaleShowVerticalLines: false,
+    responsive: true
+  };
   constructor() { }
 
   // events

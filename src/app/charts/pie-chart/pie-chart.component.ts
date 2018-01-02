@@ -10,9 +10,11 @@ import { Color } from 'ng2-charts';
 export class PieChartComponent {
   charts: Charts;
   name: string;
+  
   @Input('charts')
   set in(charts) {
     if (charts) {
+      this.charts = new Charts();
       this.charts = charts;
       charts.Chartdata.dataSets.forEach(element => {
         this.pieChartDataSet.push(element);
@@ -23,6 +25,10 @@ export class PieChartComponent {
       });
     }
   }
+  get in(): Charts{
+    return this.charts;
+  }
+
   public pieChartOptions:any = {
     elements:{
       arc:{

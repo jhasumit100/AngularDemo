@@ -7,22 +7,13 @@ import { getRandomString } from "selenium-webdriver/safari";
 
 @Injectable()
 export class ChartService {
-    private charts: Charts;
+    public charts: Charts;
     
 	chartData: Charts;
 	prev_link;
 	next_link;
     constructor(private odataService: oDataService) {
 
-    }
-
-    getRandomColor(){
-        var letters = '0123456789ABCDEF';
-        var color = '#';
-        for(var i = 0; i < 6; i++){
-            color += letters[Math.floor(Math.random() * 16)];
-        }
-        return color;
     }
 
     fetchChartData(){
@@ -51,7 +42,7 @@ export class ChartService {
         });
         let backgroundColorSet = new Set();
         while(backgroundColorSet.size < toolTipSet.size){
-            backgroundColorSet.add(this.getRandomColor())
+            backgroundColorSet.add(this.charts.getRandomColor())
         }
         let backgroundColor = new Array<any>();
         backgroundColorSet.forEach(item => {

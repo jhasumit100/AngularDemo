@@ -1,10 +1,45 @@
 <div class="container">
-    <mat-form-field *ngIf="charts">
-      <mat-select matInput placeholder="Product Group" ([ngModel])="WidgetSettings" (change)="onWidgetSettingsChange()"
-        multiple>
-        <mat-option *ngFor="let ProductGroup of ProductGroupList" [value]="ProductGroup">
-          {{ProductGroup}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
+  <mat-form-field *ngIf="charts">
+    <mat-select matInput placeholder="Product Group" #ProductGroups ([ngModel])="ProductGroups" (change)="onProductGroupsChange(ProductGroups.value)" >
+      <mat-option *ngFor="let ProductGroup of ProductGroupList" [value]="ProductGroup">
+        {{ProductGroup}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field *ngIf="charts">
+    <mat-select matInput placeholder="Theme" #Theme ([ngModel])="Themes" (change)="onThemesChange(Theme.value)" >
+      <mat-option *ngFor="let Theme of ThemeList" [value]="Theme">
+        {{Theme}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field *ngIf="charts">
+    <mat-select matInput placeholder="Season" #Season ([ngModel])="Seasons" (change)="onSeasonsChange(Season.value)" >
+      <mat-option *ngFor="let Season of SeasonList" [value]="Season">
+        {{Season}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field *ngIf="charts">
+    <mat-select matInput placeholder="Gender" #Gender ([ngModel])="Genders" (change)="onGendersChange(Gender.value)" >
+      <mat-option *ngFor="let Gender of GenderList" [value]="Gender">
+        {{Gender}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field *ngIf="charts">
+    <mat-select matInput placeholder="Plc" #Plc ([ngModel])="Plcs" (change)="onPlcsChange(Plc.value)" >
+      <mat-option *ngFor="let Plc of PlcList" [value]="Plc">
+        {{Plc}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field *ngIf="charts">
+    <mat-select matInput placeholder="CountryofOrigin" #CountryofOrigin ([ngModel])="CountryofOrigins"
+     (change)="onCountryofOriginsChange(CountryofOrigin.value)" >
+      <mat-option *ngFor="let CountryofOrigin of CountryofOriginList" [value]="CountryofOrigin">
+        {{CountryofOrigin}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
 </div>

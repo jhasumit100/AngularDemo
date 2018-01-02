@@ -11,7 +11,7 @@ You Need to Install some Libraries as well such as
 <b>Step 2: Animations</b> <pre>npm install --save @angular/animations</pre>
 <b>Step 3: You can install ng2-charts using npm </b> <pre>npm install ng2-charts --save</pre>
 <b>Step 4: You need to install and include Chart.js library in application</b> <pre>npm install chart.js --save</pre>
-
+<b>Step 5: You need to install and include Chart.js library in application</b> <pre>npm install ngx-progressbar --save</pre>
 Then, Download this Project and paste in your Project Folder.
 
 Then all set.
