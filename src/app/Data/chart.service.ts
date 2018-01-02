@@ -8,28 +8,28 @@ import { getRandomString } from "selenium-webdriver/safari";
 @Injectable()
 export class ChartService {
     public charts: Charts;
-    
-	chartData: Charts;
-	prev_link;
-	next_link;
+
+    chartData: Charts;
+    prev_link;
+    next_link;
     constructor(private odataService: oDataService) {
 
     }
 
-    fetchChartData(){
+    fetchChartData() {
         return Observable.of(this.charts);
     }
-	
-	getChartData() {
-		return this.odataService.fetchData();
-	}
 
-    async getChartDataAsync()  {
-        const resp = await this.odataService.fetchData().toPromise();               
+    getChartData(url: string) {
+        return this.odataService.fetchData(url);
+    }
+
+    async getChartDataAsync(url: string) {
+        const resp = await this.odataService.fetchData(url).toPromise();
         this.charts = new Charts();
         this.charts.context = resp["@odata.context"];
         this.charts.value = resp["value"];
-        this.charts.nextLink = resp["@odata.nextLink"]; 
+        this.charts.nextLink = resp["@odata.nextLink"];
         this.charts.Chartdata = new Object();
         let toolTipSet = new Set(this.charts.value.map(a => a.productgroup));
         let toolTip = new Array<string>();
@@ -38,10 +38,10 @@ export class ChartService {
         });
         let dataCount = new Array<number>();
         toolTipSet.forEach(item => {
-            dataCount.push(this.charts.value.map(a=> a.productgroup).filter(x=> x == item.toString()).length);
+            dataCount.push(this.charts.value.map(a => a.productgroup).filter(x => x == item.toString()).length);
         });
         let backgroundColorSet = new Set();
-        while(backgroundColorSet.size < toolTipSet.size){
+        while (backgroundColorSet.size < toolTipSet.size) {
             backgroundColorSet.add(this.charts.getRandomColor())
         }
         let backgroundColor = new Array<any>();
@@ -51,9 +51,9 @@ export class ChartService {
 
         this.charts.Chartdata.dataSets = [
             {
-                "data" : dataCount,
-                "backgroundColor" : backgroundColor,
-                "hoverBackgroundColor" : backgroundColor
+                "data": dataCount,
+                "backgroundColor": backgroundColor,
+                "hoverBackgroundColor": backgroundColor
             }
         ];
 

@@ -11,6 +11,31 @@ import { Chart } from 'chart.js';
 export class DoughnutChartComponent {
   charts: Charts;
 
+  // Doughnut
+
+  public doughnutChartOptions: any = {
+    responsive: true,
+    maintainAspectRatio: true,
+    elements: {
+      arc: {
+        borderWidth: 0
+      }
+    },
+    legend: {
+      display: false
+    },
+    hover: {
+      mode: 'nearest',
+      intersect: false
+    },
+    events: ['click'],
+  };
+  public colors: Array<Color> = [{}];
+  public doughnutChartDataSet: Array<any>[] = [];
+  public doughnutChartLabels: string[] = [];
+  public doughnutChartData: number[] = [];
+  public doughnutChartType: string = 'doughnut';
+
   @ViewChild('doughnutcanvas') canvasChart: Chart;
 
   @Input('charts')
@@ -28,7 +53,7 @@ export class DoughnutChartComponent {
         this.doughnutChartLabels.push(element);
       });
     }
-    
+
     if (this.canvasChart) {
       let ctx = this.canvasChart.nativeElement.getContext("2d");
       let myChart = new Chart(ctx, {
@@ -41,29 +66,6 @@ export class DoughnutChartComponent {
       });
     }
   }
-  // Doughnut
-
-  public doughnutChartOptions: any = {
-    responsive: true,
-    maintainAspectRatio: true,
-    elements: {
-      arc: {
-        borderWidth: 0
-      }
-    },
-    legend: {
-      display: false
-    },
-    hover: {
-      mode: 'nearest',
-      intersect: false
-    }
-  };
-  public colors: Array<Color> = [{}];
-  public doughnutChartDataSet: Array<any>[] = [];
-  public doughnutChartLabels: string[] = [];
-  public doughnutChartData: number[] = [];
-  public doughnutChartType: string = 'doughnut';
 
   constructor() { }
 

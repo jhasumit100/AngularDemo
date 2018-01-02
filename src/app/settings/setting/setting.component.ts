@@ -2,6 +2,7 @@ import { Component, Input, EventEmitter, Output } from '@angular/core';
 import { Charts } from '../../Data/charts';
 import { FormControl, FormGroup, FormArray } from '@angular/forms/src/model';
 import { Observable } from 'rxjs';
+import { ChartService } from '../../Data/chart.service';
 
 @Component({
   selector: 'widget-setting',
@@ -11,41 +12,6 @@ import { Observable } from 'rxjs';
 export class SettingComponent {
   updateCharts: Charts;
   charts: Charts;
-  @Input('charts')
-  set in(charts) {
-    if (charts) {
-      this.charts = charts;
-      let toolTipSet = new Set(this.charts.value.map(a => a.productgroup));
-      toolTipSet.forEach(item => {
-        this.ProductGroupList.push(item);
-      });
-      toolTipSet = new Set(this.charts.value.map(a => a.theme).filter(x => x != "0"));
-      toolTipSet.forEach(item => {
-        if (item)
-          this.ThemeList.push(item);
-      });
-      toolTipSet = new Set(this.charts.value.map(a => a.season).filter(x => x != "0"));
-      toolTipSet.forEach(item => {
-        if (item)
-          this.SeasonList.push(item);
-      });
-      toolTipSet = new Set(this.charts.value.map(a => a.gender).filter(x => x != "0"));
-      toolTipSet.forEach(item => {
-        if (item)
-          this.GenderList.push(item);
-      });
-      toolTipSet = new Set(this.charts.value.map(a => a.plc).filter(x => x != "0"));
-      toolTipSet.forEach(item => {
-        if (item)
-          this.PlcList.push(item);
-      });
-      toolTipSet = new Set(this.charts.value.map(a => a.countryoforigin).filter(x => x != "0"));
-      toolTipSet.forEach(item => {
-        if (item)
-          this.CountryofOriginList.push(item);
-      });
-    }
-  }
 
   ProductGroups: string;
   ProductGroupList: string[] = [];
@@ -64,7 +30,50 @@ export class SettingComponent {
   filter = new EventEmitter<any>();
   obscharts: Observable<Charts>;
 
-  constructor() {
+  @Input('charts')
+  set in(charts) {
+    if (charts) {
+      this.charts = charts;
+      let toolTipSet = new Set(this.charts.value.map(a => a.productgroup).filter(x => x != "0"));
+      this.ProductGroupList = [];
+      toolTipSet.forEach(item => {
+        if (item)
+          this.ProductGroupList.push(item);
+      });
+      toolTipSet = new Set(this.charts.value.map(a => a.theme).filter(x => x != "0"));
+      this.ThemeList = [];
+      toolTipSet.forEach(item => {
+        if (item)
+          this.ThemeList.push(item);
+      });
+      toolTipSet = new Set(this.charts.value.map(a => a.season).filter(x => x != "0"));
+      this.SeasonList = [];
+      toolTipSet.forEach(item => {
+        if (item)
+          this.SeasonList.push(item);
+      });
+      toolTipSet = new Set(this.charts.value.map(a => a.gender).filter(x => x != "0"));
+      this.GenderList = [];
+      toolTipSet.forEach(item => {
+        if (item)
+          this.GenderList.push(item);
+      });
+      toolTipSet = new Set(this.charts.value.map(a => a.plc).filter(x => x != "0"));
+      this.PlcList = [];
+      toolTipSet.forEach(item => {
+        if (item)
+          this.PlcList.push(item);
+      });
+      toolTipSet = new Set(this.charts.value.map(a => a.countryoforigin).filter(x => x != "0"));
+      this.CountryofOriginList = [];
+      toolTipSet.forEach(item => {
+        if (item)
+          this.CountryofOriginList.push(item);
+      });
+    }
+  }
+
+  constructor(private _chartService: ChartService) {
 
   }
 
@@ -110,11 +119,12 @@ export class SettingComponent {
     data.Chartdata.dataSets = [
       {
         "data": dataCount,
-        "backgroundColor": backgroundColor,
-        "hoverBackgroundColor": backgroundColor
+        "backgroundColor": backgroundColor/*,
+        "hoverBackgroundColor": backgroundColor*/
       }
     ];
     data.Chartdata.labels = toolTip;
+    data.Chartdata.backgroundColor = backgroundColor;
     this.obscharts = Observable.of(data);
     return this.obscharts;
   }
@@ -161,6 +171,19 @@ export class SettingComponent {
     this.getData().subscribe(result => {
       this.updateCharts = result;
       this.filter.emit(this.updateCharts);
+    });
+  }
+
+  Load_More() {
+    this._chartService.getChartData(this.charts.nextLink).subscribe(charts => {
+      this.charts.nextLink = charts["@odata.nextLink"];
+      if (charts["value"]) {
+        charts["value"].forEach(element => {
+          if (element)
+            this.charts.value.push(element);
+        });
+      }
+      this.setData();
     });
   }
 
