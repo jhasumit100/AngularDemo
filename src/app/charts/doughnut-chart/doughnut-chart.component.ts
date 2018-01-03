@@ -1,6 +1,6 @@
 import { Component, Input, ViewChild } from '@angular/core';
 import { Charts } from '../../Data/charts';
-import { Color } from 'ng2-charts';
+import { Color, BaseChartDirective } from 'ng2-charts';
 import { Chart } from 'chart.js';
 
 @Component({
@@ -38,6 +38,14 @@ export class DoughnutChartComponent {
 
   @ViewChild('doughnutcanvas') canvasChart: Chart;
 
+  @ViewChild(BaseChartDirective) private _chart;
+
+  forceChartRefresh() {
+        setTimeout(() => {
+            this._chart.refresh();
+        }, 10);
+    }
+
   @Input('charts')
   set in(charts) {
     if (charts) {
@@ -65,6 +73,7 @@ export class DoughnutChartComponent {
         options: this.doughnutChartOptions
       });
     }
+    this.forceChartRefresh();
   }
 
   constructor() { }

@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { Charts } from '../../Data/charts';
-import { Color } from 'ng2-charts';
+import { Color, BaseChartDirective } from 'ng2-charts';
 import { Chart } from 'chart.js';
 
 @Component({
@@ -59,6 +59,14 @@ export class LineChartComponent {
 
   @ViewChild('linecanvas') canvasChart: Chart;
 
+  @ViewChild(BaseChartDirective) private _chart;
+
+  forceChartRefresh() {
+        setTimeout(() => {
+            this._chart.refresh();
+        }, 10);
+    }
+
   @Input('charts')
   set in(charts) {
     if (charts) {
@@ -83,6 +91,7 @@ export class LineChartComponent {
         options: this.lineChartOptions
       });
     }
+    this.forceChartRefresh();
   }
 
   constructor() { }

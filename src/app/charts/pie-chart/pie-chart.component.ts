@@ -1,7 +1,7 @@
 import { Component, Input, ViewChild } from '@angular/core';
 import { Charts } from '../../Data/charts';
 import { Chart } from 'chart.js';
-import { Color } from 'ng2-charts';
+import { Color, BaseChartDirective } from 'ng2-charts';
 
 @Component({
   selector: 'pie-chart',
@@ -19,6 +19,14 @@ export class PieChartComponent {
   public pieChartType: string = 'pie';
 
   @ViewChild('piecanvas') canvasChart: Chart;
+
+  @ViewChild(BaseChartDirective) private _chart;
+
+  forceChartRefresh() {
+        setTimeout(() => {
+            this._chart.refresh();
+        }, 10);
+    }
 
   public pieChartOptions: any = {
     responsive: true,
@@ -60,6 +68,7 @@ export class PieChartComponent {
       });
 
       charts.Chartdata.backgroundColor.forEach(element => {
+        console.log(element);
         this.pieChartColors.push(element);
       });
     }
@@ -75,6 +84,8 @@ export class PieChartComponent {
         options: this.pieChartOptions
       });
       //myChart.update();
+
+      this.forceChartRefresh();
     }
   }
 
