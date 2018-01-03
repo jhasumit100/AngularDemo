@@ -25,7 +25,7 @@ export class SidenavLayoutComponent implements OnInit {
         this.progress.start();
         //this.data = await this._chartService.getChartDataAsync();
 
-        this._chartService.getChartData().subscribe(charts => {
+        this._chartService.getChartData('http://test.wfxondemand.com/oDataService/Products').subscribe(charts => {
             this.charts = new Charts();
             this.charts.context = charts["@odata.context"];
             this.charts.value = charts["value"];
@@ -51,19 +51,21 @@ export class SidenavLayoutComponent implements OnInit {
             this.charts.Chartdata.dataSets = [
                 {
                     "data": dataCount,
-                    "backgroundColor": backgroundColor,
-                    "hoverBackgroundColor": backgroundColor
+                    "backgroundColor": backgroundColor/*,
+                    "hoverBackgroundColor": backgroundColor*/
                 }
             ];
 
             this.charts.Chartdata.labels = toolTip;
+            this.charts.Chartdata.backgroundColor = backgroundColor;
             this.progress.done();
         });
         //this.fetchChartData();
     }
 
-    UpdateChart(event : Charts){
+    UpdateChart(event: Charts) {
         this._chartService.charts = event;
+        this.toggleService.subscribe(() => this.sidenav.toggle());
         this.fetchChartData().subscribe(chart => {
             this.charts = chart;
         });
