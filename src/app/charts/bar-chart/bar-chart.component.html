@@ -1,4 +1,11 @@
 <div style="display: block" *ngIf="charts">
+  <label class="chart-title">{{barChartTitle}}</label>
   <canvas #barcanvas baseChart width="600px" [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions"
     [legend]="barChartLegend" [colors]="colors" [chartType]="barChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+  <div id="wrap">
+    <button mat-icon-button (click)="Back()">
+      <mat-icon>arrow_upward</mat-icon>
+    </button>
+    <div #chartdata class="msg"></div>
+  </div>
 </div>

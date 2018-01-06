@@ -1,0 +1,67 @@
+<div class="mat-container mat-elevation-z8">
+  <mat-table #table [dataSource]="datasource" *ngIf="charts" class="mat-table">
+    <ng-container matColumnDef="id">
+      <mat-header-cell class="mat-header-cell" *matHeaderCellDef> ID </mat-header-cell>
+      <mat-cell class="mat-cell" *matCellDef="let styledata"> {{styledata.id}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="code">
+      <mat-header-cell class="mat-header-cell" *matHeaderCellDef> Style Code </mat-header-cell>
+      <mat-cell class="mat-cell" *matCellDef="let element"> {{element.code}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <mat-header-cell class="mat-header-cell" *matHeaderCellDef> Style Name </mat-header-cell>
+      <mat-cell class="mat-cell" *matCellDef="let element"> {{element.name}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="desc">
+      <mat-header-cell class="mat-header-cell" *matHeaderCellDef> Style Desc </mat-header-cell>
+      <mat-cell class="mat-cell" *matCellDef="let element"> {{element.desc}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="productgroup">
+      <mat-header-cell class="mat-header-cell" *matHeaderCellDef> Product Group </mat-header-cell>
+      <mat-cell class="mat-cell" *matCellDef="let element"> {{element.productgroup}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="productsubcategory">
+      <mat-header-cell class="mat-header-cell" *matHeaderCellDef> Product Sub Category </mat-header-cell>
+      <mat-cell class="mat-cell" *matCellDef="let element"> {{element.productsubcategory}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="theme">
+      <mat-header-cell class="mat-header-cell" *matHeaderCellDef> Theme </mat-header-cell>
+      <mat-cell class="mat-cell" *matCellDef="let element"> {{element.theme}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="season">
+      <mat-header-cell class="mat-header-cell" *matHeaderCellDef> Season </mat-header-cell>
+      <mat-cell class="mat-cell" *matCellDef="let element"> {{element.season}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="gender">
+      <mat-header-cell class="mat-header-cell" *matHeaderCellDef> Gender </mat-header-cell>
+      <mat-cell class="mat-cell" *matCellDef="let element"> {{element.gender}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="plc">
+      <mat-header-cell class="mat-header-cell" *matHeaderCellDef> Life Cycle Stage </mat-header-cell>
+      <mat-cell class="mat-cell" *matCellDef="let element"> {{element.plc}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="countryoforigin">
+      <mat-header-cell class="mat-header-cell" *matHeaderCellDef> Country of Origin </mat-header-cell>
+      <mat-cell class="mat-cell" *matCellDef="let element"> {{element.countryoforigin}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row class="mat-header-row" *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row class="mat-row" *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+  </mat-table>
+
+  <mat-paginator #paginator
+                 [pageSize]="50"                 
+                 [pageSizeOptions]="[5, 10, 20]">
+  </mat-paginator>
+</div>

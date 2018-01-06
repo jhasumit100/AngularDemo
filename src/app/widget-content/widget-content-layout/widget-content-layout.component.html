@@ -36,3 +36,19 @@
                 </mat-card>
         </mat-grid-tile>
 </mat-grid-list>
+
+<mat-grid-list cols="1" rowHeight="2:1">
+         <mat-grid-tile>
+                <mat-card [style.overflow]="'auto'" [style.height]="'auto'">
+                        <mat-card-header>
+                                <mat-card-title>Actual Data</mat-card-title>
+                                <mat-card-subtitle><span>
+                                        WFX Test Data
+                                </span></mat-card-subtitle>
+                        </mat-card-header>
+                        <mat-card-content >
+                                <data-grid [charts]="charts"></data-grid>
+                        </mat-card-content>
+                </mat-card>
+        </mat-grid-tile>
+</mat-grid-list>

@@ -7,7 +7,6 @@ import { Charts } from '../../Data/charts';
   styleUrls: ['./widget-content-layout.component.css']
 })
 export class WidgetContentLayoutComponent {
-  data;
   @Input() charts: Charts;
 
   constructor() {

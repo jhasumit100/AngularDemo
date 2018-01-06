@@ -21,6 +21,7 @@ export class SidenavLayoutComponent implements OnInit {
 
     }
     async ngOnInit() {
+        this.sidenav.mode = "push";
         this.toggleService.subscribe(() => this.sidenav.toggle());
         this.progress.start();
         //this.data = await this._chartService.getChartDataAsync();
@@ -29,6 +30,7 @@ export class SidenavLayoutComponent implements OnInit {
             this.charts = new Charts();
             this.charts.context = charts["@odata.context"];
             this.charts.value = charts["value"];
+			this.charts.filteredValue = charts["value"];											
             this.charts.nextLink = charts["@odata.nextLink"];
             this.charts.Chartdata = new Object();
             let toolTipSet = new Set(this.charts.value.map(a => a.productsubcategory));
@@ -51,8 +53,8 @@ export class SidenavLayoutComponent implements OnInit {
             this.charts.Chartdata.dataSets = [
                 {
                     "data": dataCount,
-                    "backgroundColor": backgroundColor/*,
-                    "hoverBackgroundColor": backgroundColor*/
+                    "backgroundColor": backgroundColor,
+                    "hoverBackgroundColor": backgroundColor
                 }
             ];
 
@@ -65,7 +67,7 @@ export class SidenavLayoutComponent implements OnInit {
 
     UpdateChart(event: Charts) {
         this._chartService.charts = event;
-        this.toggleService.subscribe(() => this.sidenav.toggle());
+        this.sidenav.toggle();
         this.fetchChartData().subscribe(chart => {
             this.charts = chart;
         });

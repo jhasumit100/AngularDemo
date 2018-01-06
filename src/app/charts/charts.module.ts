@@ -8,11 +8,13 @@ import { DoughnutChartComponent } from './doughnut-chart/doughnut-chart.componen
 import { oDataService } from '../Data/data.services';
 import { HttpModule } from '@angular/http';
 import { ChartService } from '../Data/chart.service';
+import { MatIconModule } from '@angular/material';
 
 @NgModule({
   imports: [
     CommonModule,
-    ChartsModule
+    ChartsModule,
+    MatIconModule
   ],
   exports: [
     PieChartComponent, BarChartComponent, LineChartComponent, DoughnutChartComponent, HttpModule

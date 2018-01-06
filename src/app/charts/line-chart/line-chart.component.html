@@ -1,5 +1,12 @@
 <div style="display: block;" *ngIf="charts">
+    <label class="chart-title">{{lineChartTitle}}</label>
     <canvas #linecanvas baseChart width="600px" [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions"
         [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType" (chartHover)="chartHovered($event)"
         (chartClick)="chartClicked($event)"></canvas>
+    <div id="wrap">
+        <button mat-icon-button (click)="Back()">
+            <mat-icon>arrow_upward</mat-icon>
+        </button>
+        <div #chartdata class="msg"></div>
+    </div>
 </div>

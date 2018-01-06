@@ -6,6 +6,7 @@ export class Charts{
     value : StyleData[];
     nextLink;
     Chartdata;
+    filteredValue : StyleData[];			
 
     getRandomColor(){
         var letters = '0123456789ABCDEF';

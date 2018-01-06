@@ -1,7 +1,21 @@
 /* mat-grid-tile{
     border: 1px solid black;
-} 
+} */
 
 mat-grid-list{
-    background-color: aqua;
-}*/
+    /* padding-top: 20px; */
+    flex: 1;
+    background-color: lightgray;
+    height: 100%;
+}
+mat-card{
+    padding-top: 10px;
+}
+
+data-grid {
+    width: 100%;
+    max-height: 700px;
+}
+/* mat-grid-tile{
+    padding-bottom: 20px;
+} */

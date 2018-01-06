@@ -84,7 +84,7 @@ export class SettingComponent {
     data.value = this.charts.value;
     data.Chartdata = new Object();
     let toolTipSet, dataCount, widgetdata;
-    widgetdata = this.charts.value;
+    widgetdata = this.charts.filteredValue;
     if (this.ProductGroups)
       widgetdata = widgetdata.filter(a => a.productgroup == this.ProductGroups);
     if (this.Themes)
@@ -98,6 +98,7 @@ export class SettingComponent {
     if (this.CountryofOrigins)
       widgetdata = widgetdata.filter(a => a.countryoforigin == this.CountryofOrigins);
 
+    data.filteredValue = widgetdata;								
     toolTipSet = new Set(widgetdata.map(a => a.productsubcategory));
     let toolTip = new Array<string>();
     toolTipSet.forEach(item => {
@@ -119,8 +120,8 @@ export class SettingComponent {
     data.Chartdata.dataSets = [
       {
         "data": dataCount,
-        "backgroundColor": backgroundColor/*,
-        "hoverBackgroundColor": backgroundColor*/
+        "backgroundColor": backgroundColor,
+        "hoverBackgroundColor": backgroundColor
       }
     ];
     data.Chartdata.labels = toolTip;
